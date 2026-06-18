@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bareilly Central | Your Legacy Starts Here</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background-color: #fcf9f8;
+  color: #1c1b1b;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+/* ============================================================
+   CSS VARIABLES (design tokens)
+   ============================================================ */
+:root {
+  --primary: #50005f;
+  --primary-container: #6b1e7a;
+  --primary-fixed: #ffd6ff;
+  --primary-fixed-dim: #f7acff;
+  --on-primary: #ffffff;
+  --on-primary-fixed: #350040;
+  --on-primary-fixed-variant: #70247f;
+  --on-primary-container: #e58ff0;
+  --inverse-primary: #f7acff;
+  --surface-tint: #8b3e99;
+
+  --secondary: #4b6700;
+  --secondary-container: #bff44c;
+  --secondary-fixed: #bff44c;
+  --secondary-fixed-dim: #a4d730;
+  --on-secondary: #ffffff;
+  --on-secondary-container: #4f6e00;
+  --on-secondary-fixed: #141f00;
+  --on-secondary-fixed-variant: #374e00;
+
+  --tertiary: #5f0022;
+  --tertiary-container: #880034;
+  --tertiary-fixed: #ffd9de;
+  --tertiary-fixed-dim: #ffb2be;
+  --on-tertiary: #ffffff;
+  --on-tertiary-container: #ff8ca2;
+  --on-tertiary-fixed: #400014;
+  --on-tertiary-fixed-variant: #900038;
+
+  --background: #fcf9f8;
+  --surface: #fcf9f8;
+  --surface-bright: #fcf9f8;
+  --surface-dim: #dcd9d9;
+  --surface-variant: #e5e2e1;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f6f3f2;
+  --surface-container: #f0eded;
+  --surface-container-high: #eae7e7;
+  --surface-container-highest: #e5e2e1;
+  --on-surface: #1c1b1b;
+  --on-surface-variant: #4f434f;
+  --inverse-surface: #313030;
+  --inverse-on-surface: #f3f0ef;
+
+  --outline: #817380;
+  --outline-variant: #d2c2d0;
+
+  --error: #ba1a1a;
+  --error-container: #ffdad6;
+  --on-error: #ffffff;
+  --on-error-container: #93000a;
+
+  --border-radius: 1rem;
+  --border-radius-lg: 2rem;
+  --border-radius-xl: 3rem;
+  --border-radius-full: 9999px;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 12px;
+  --spacing-base: 8px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+  --spacing-gutter: 24px;
+  --margin-mobile: 16px;
+  --margin-desktop: 40px;
+  --container-max: 1280px;
+}
+
+/* ============================================================
+   UTILITY / SHARED
+   ============================================================ */
+.container {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--margin-mobile);
+  padding-right: var(--margin-mobile);
+}
+.text-gradient {
+  background: linear-gradient(45deg, #50005f, #4b6700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.glass-card {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.liquid-blob {
+  position: absolute;
+  filter: blur(60px);
+  z-index: -1;
+  opacity: 0.4;
+  animation: float 15s infinite alternate ease-in-out;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes float {
+  0%   { transform: translate(0,0) scale(1); }
+  50%  { transform: translate(30px,-50px) scale(1.1); }
+  100% { transform: translate(-20px,40px) scale(0.9); }
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+  50%      { transform: translateY(-10px); animation-timing-function: cubic-bezier(0,0,0.2,1); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(80,0,95,0.4); }
+  70%  { transform: scale(1);   box-shadow: 0 0 0 15px rgba(80,0,95,0); }
+  100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(80,0,95,0); }
+}
+@keyframes slideInNav {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delays */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.font-display-lg  { font-family: 'Montserrat', sans-serif; font-size: 64px; line-height: 1.1; letter-spacing: -0.04em; font-weight: 800; }
+.font-display-md  { font-family: 'Montserrat', sans-serif; font-size: 48px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; }
+.font-headline-lg { font-family: 'Montserrat', sans-serif; font-size: 32px; line-height: 1.3; letter-spacing: -0.01em; font-weight: 700; }
+.font-headline-md { font-family: 'Montserrat', sans-serif; font-size: 24px; line-height: 1.4; font-weight: 600; }
+.font-body-lg     { font-family: 'Inter', sans-serif; font-size: 18px; line-height: 1.6; font-weight: 400; }
+.font-body-md     { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; font-weight: 400; }
+.font-label-lg    { font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.2; letter-spacing: 0.02em; font-weight: 600; }
+.font-label-sm    { font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.2; letter-spacing: 0.05em; font-weight: 500; }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  background-color: rgba(252,249,248,0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  animation: slideInNav 0.6s ease forwards;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.nav.scrolled {
+  background-color: rgba(255,255,255,0.97);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--margin-mobile);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-base);
+  height: 100%;
+}
+.nav-logo img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.nav-logo img:hover { transform: scale(1.05); }
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+.nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  transition: color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+.nav-link:hover { color: var(--primary); }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 6px;
+  background-color: var(--secondary);
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 6px; }
+.nav-link.active {
+  color: var(--secondary);
+  font-weight: 700;
+}
+.nav-link.active::after { width: 6px; }
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+.nav-search {
+  color: var(--on-surface-variant);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-size: 24px;
+}
+.nav-search:hover { color: var(--primary); }
+.btn-plan-visit {
+  background-color: var(--primary);
+  color: var(--on-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 9999px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(80,0,95,0.3);
+}
+.btn-plan-visit:hover  { transform: scale(1.05); box-shadow: 0 6px 20px rgba(80,0,95,0.4); }
+.btn-plan-visit:active { transform: scale(0.95); }
+
+/* Hamburger */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--on-surface);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile nav */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(20px);
+  padding: var(--spacing-md);
+  flex-direction: column;
+  gap: var(--spacing-md);
+  z-index: 49;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.mobile-nav.open {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+}
+.mobile-nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--on-surface);
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--outline-variant);
+  transition: color 0.2s ease;
+}
+.mobile-nav-link:hover { color: var(--primary); }
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding-top: 80px; */
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease;
+}
+.hero:hover .hero-bg img { transform: scale(1.03); }
+.hero-overlay-purple {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(80,0,95,0.4), transparent);
+  z-index: 1;
+}
+.hero-overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--container-max);
+  padding: 0 var(--margin-mobile);
+  text-align: center;
+}
+.hero-inner { max-width: 768px; }
+.hero-badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: 9999px;
+  background-color: var(--secondary);
+  color: var(--on-secondary);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-md);
+  animation: bounce 2s infinite, fadeInUp 0.8s ease forwards;
+}
+.hero-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(36px, 4vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: var(--spacing-md);
+  animation: fadeInUp 0.9s ease 0.2s both;
+}
+.hero-title-accent { color: var(--secondary-fixed); }
+.hero-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 30px;
+  max-width: 560px;
+  animation: fadeInUp 1s ease 0.4s both;
+}
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  justify-content: center;
+  animation: fadeInUp 1.1s ease 0.6s both;
+}
+.btn-primary-hero {
+  background-color: var(--primary);
+  color: var(--on-primary);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  padding:20px;
+  border-radius: 9999px;
+  box-shadow: 0 8px 25px rgba(80,0,95,0.4);
+  transition: all 0.3s ease;
+}
+.btn-primary-hero:hover  { background-color: var(--primary-container); transform: scale(1.05); }
+.btn-primary-hero:active { transform: scale(0.95); }
+.btn-secondary-hero {
+  background-color: var(--secondary);
+  color: var(--on-secondary);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  padding: 20px;
+  border-radius: 9999px;
+  box-shadow: 0 8px 25px rgba(75,103,0,0.3);
+  transition: all 0.3s ease;
+}
+.btn-secondary-hero:hover  { background-color: var(--secondary-fixed-dim); color: var(--on-secondary-fixed); transform: scale(1.05); }
+.btn-secondary-hero:active { transform: scale(0.95); }
+
+/* Trust bar */
+.trust-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(252,249,248,0.9);
+  backdrop-filter: blur(12px);
+  padding: var(--spacing-md);
+  border-top: 1px solid rgba(209,194,208,0.3);
+  display: none;
+  z-index: 3;
+}
+.trust-bar-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--margin-mobile);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition: filter 0.5s ease, opacity 0.5s ease;
+}
+.trust-bar-inner:hover { filter: grayscale(0); opacity: 1; }
+.trust-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  color: var(--on-surface-variant);
+}
+.trust-logos { display: flex; gap: var(--spacing-lg); overflow: hidden; }
+.trust-logo-placeholder {
+  height: 32px;
+  background-color: var(--surface-container);
+  border-radius: 4px;
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right, #f0eded 8%, #e0dede 18%, #f0eded 33%);
+  background-size: 1000px 100%;
+}
+
+/* ============================================================
+   BRAND VISION SECTION
+   ============================================================ */
+.section-vision {
+  padding: var(--spacing-xl) 0;
+  position: relative;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.section-header h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: var(--spacing-sm);
+}
+.section-divider {
+  height: 4px;
+  width: 96px;
+  background-color: var(--secondary);
+  margin: 0 auto;
+  border-radius: 9999px;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+.vision-card {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255,255,255,0.4);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+.vision-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  transform: translateY(-6px);
+}
+.vision-card.featured {
+  transform: scale(1.03);
+  background: #ffffff;
+}
+.vision-card.featured:hover { transform: scale(1.03) translateY(-6px); }
+.card-icon {
+  width: 64px; height: 64px;
+  border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: var(--spacing-md);
+  transition: background-color 0.3s ease;
+}
+.card-icon.purple { background-color: rgba(80,0,95,0.1); }
+.card-icon.green  { background-color: rgba(75,103,0,0.1); }
+.card-icon.red    { background-color: rgba(255,217,222,0.5); }
+.vision-card:hover .card-icon.purple { background-color: var(--primary); }
+.vision-card:hover .card-icon.green  { background-color: var(--secondary); }
+.vision-card:hover .card-icon.red    { background-color: var(--tertiary); }
+.card-icon span { transition: color 0.3s ease; }
+.card-icon.purple span { color: var(--primary); }
+.card-icon.green span  { color: var(--secondary); }
+.card-icon.red span    { color: var(--tertiary); }
+.vision-card:hover .card-icon span { color: #fff !important; }
+.vision-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px; font-weight: 600; line-height: 1.4;
+  margin-bottom: var(--spacing-sm);
+}
+.vision-card p { color: var(--on-surface-variant); }
+
+/* ============================================================
+   MARKET OPPORTUNITY
+   ============================================================ */
+.section-market {
+  padding: 40px 0;
+  background-color: var(--primary);
+  color: var(--on-primary);
+  position: relative;
+  overflow: hidden;
+}
+.section-market::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: rgba(247,172,255,0.1);
+  border-radius: 9999px;
+  filter: blur(60px);
+}
+.market-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+.market-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--spacing-md);
+}
+.market-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255,214,255,0.8);
+  margin-bottom: 20px;
+}
+.market-report-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-base);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--secondary-fixed);
+  cursor: pointer;
+  transition: gap 0.3s ease;
+}
+.market-report-link:hover { gap: var(--spacing-sm); }
+.market-report-link span { transition: transform 0.3s ease; }
+.market-report-link:hover span { transform: translateX(4px); }
+.market-stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); }
+.stat-card {
+  background-color: var(--primary-container);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  border: 1px solid rgba(255,214,255,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+.stat-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--secondary-fixed);
+  margin-bottom: var(--spacing-xs);
+}
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* ============================================================
+   SPACES SECTION
+   ============================================================ */
+.section-spaces {
+  padding:40px 0;
+  background-color: var(--surface-container-low);
+}
+.spaces-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 50px;
+  gap: var(--spacing-md);
+}
+.spaces-header-text h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: var(--spacing-sm);
+}
+.spaces-header-text p { color: var(--on-surface-variant); }
+.spaces-filter {
+  background: #fff;
+  padding: 10px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  display: flex;
+  gap: var(--spacing-xs);
+}
+.filter-btn {
+  padding: 12px;
+  border-radius: 9999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+.filter-btn.active { background-color: var(--primary); color: var(--on-primary); }
+.filter-btn:not(.active):hover { background-color: var(--surface-variant); }
+.spaces-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+.space-card {
+  background: #fff;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid var(--outline-variant);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.space-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 8px 24px rgba(80,0,95,0.1);
+  transform: translateY(-4px);
+}
+.space-icon {
+  font-size: 40px;
+  color: var(--secondary);
+  margin-bottom: var(--spacing-md);
+  display: block;
+}
+.space-card h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px; font-weight: 600; line-height: 1.4;
+  margin-bottom: var(--spacing-xs);
+}
+.space-type {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; letter-spacing: 0.05em; font-weight: 500;
+  text-transform: uppercase;
+  color: var(--outline);
+  margin-bottom: var(--spacing-md);
+  display: block;
+}
+.space-size { font-weight: 700; color: var(--primary); }
+
+/* ============================================================
+   LIFESTYLE SECTION
+   ============================================================ */
+.section-lifestyle { padding: 50px 0; overflow: hidden; }
+.lifestyle-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+.lifestyle-image-wrap {
+  position: relative;
+}
+.lifestyle-image-wrap::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: -40px;
+  width: 256px; height: 256px;
+  background: rgba(164,215,48,0.4);
+  border-radius: 9999px;
+  filter: blur(48px);
+  z-index: -1;
+}
+.lifestyle-img-box {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  position: relative;
+  aspect-ratio: 1/1;
+}
+.lifestyle-img-box img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.lifestyle-img-box:hover img { transform: scale(1.05); }
+.lifestyle-img-caption {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--spacing-lg);
+}
+.lifestyle-img-caption p { color: #fff; font-style: italic; font-size: 18px; line-height: 1.6; }
+.lifestyle-content h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+.lifestyle-features { display: flex; flex-direction: column; gap: 0px; }
+.lifestyle-feature {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease;
+}
+.lifestyle-feature:hover { background-color: var(--surface-container-low); }
+.feature-icon-wrap {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background-color 0.3s ease;
+}
+.feature-icon-wrap.green  { background-color: rgba(75,103,0,0.1); }
+.feature-icon-wrap.purple { background-color: rgba(80,0,95,0.1); }
+.feature-icon-wrap.red    { background-color: rgba(255,217,222,0.5); }
+.lifestyle-feature:hover .feature-icon-wrap { transform: scale(1.1); }
+.feature-icon-wrap .material-symbols-outlined { font-size: 24px; }
+.feature-icon-wrap.green  .material-symbols-outlined { color: var(--secondary); }
+.feature-icon-wrap.purple .material-symbols-outlined { color: var(--primary); }
+.feature-icon-wrap.red    .material-symbols-outlined { color: var(--tertiary); }
+.lifestyle-feature h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px; font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+.lifestyle-feature p { color: var(--on-surface-variant); }
+
+/* ============================================================
+   AMENITIES
+   ============================================================ */
+.section-amenities {
+  padding: 50px 0;
+  background-color: var(--surface-container);
+}
+.section-amenities p.subtitle { color: var(--on-surface-variant); }
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+.amenity-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--spacing-md);
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.amenity-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+}
+.amenity-card .material-symbols-outlined {
+  font-size: 40px;
+  color: var(--primary);
+  margin-bottom: var(--spacing-sm);
+  transition: transform 0.3s ease;
+}
+.amenity-card:hover .material-symbols-outlined { transform: scale(1.2) rotate(-5deg); }
+.amenity-card span.label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.section-gallery { padding: var(--spacing-xl) 0; position: relative; overflow: hidden; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  height: auto;
+}
+.gallery-main {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  cursor: pointer;
+  height: 400px;
+}
+.gallery-main img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.gallery-main:hover img { transform: scale(1.1); }
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--spacing-lg);
+}
+.gallery-main:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay span {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px; font-weight: 600;
+}
+.gallery-secondary { display: grid; grid-template-rows: 1fr 1fr; gap: var(--spacing-md); }
+.gallery-sub {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  cursor: pointer;
+  height: 180px;
+}
+.gallery-sub img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.gallery-sub:hover img { transform: scale(1.1); }
+.gallery-sub .gallery-overlay { padding: var(--spacing-md); }
+.gallery-sub:hover .gallery-overlay { opacity: 1; }
+.gallery-placeholder {
+  background-color: var(--surface-container);
+  display: flex; align-items: center; justify-content: center;
+}
+.gallery-placeholder .material-symbols-outlined {
+  font-size: 64px;
+  color: var(--outline);
+  opacity: 0.2;
+}
+.gallery-mini { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); height: 180px; }
+.gallery-view-all {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
+.gallery-view-all a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: gap 0.3s ease;
+}
+.gallery-view-all a:hover { gap: var(--spacing-sm); }
+.gallery-view-all span { transition: transform 0.3s ease; }
+.gallery-view-all a:hover span { transform: translateX(4px); }
+
+/* ============================================================
+   SITE PLAN / MASTERPLAN
+   ============================================================ */
+.section-siteplan {
+  padding: 40px 0;
+  background-color: var(--surface-container-low);
+  position: relative;
+  overflow: hidden;
+}
+.siteplan-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+.siteplan-grid h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: var(--spacing-sm);
+}
+.siteplan-grid > div > p { color: var(--on-surface-variant); margin-bottom: 20px; }
+.siteplan-box {
+  background: #fff;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  border: 1px solid rgba(130,115,128,0.3);
+  aspect-ratio: 16/9;
+  display: flex; align-items: center; justify-content: center;
+}
+.siteplan-box-inner { text-align: center; }
+.siteplan-box-inner .material-symbols-outlined { font-size: 80px; color: rgba(80,0,95,0.2); display: block; margin-bottom: var(--spacing-md); }
+.siteplan-box-inner p { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 600; color: var(--outline); }
+.siteplan-points { display: flex; flex-direction: column; gap: var(--spacing-md); }
+.siteplan-point {
+  background: #fff;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.siteplan-point:hover { transform: translateX(8px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.siteplan-point.green { border-left: 4px solid var(--secondary); }
+.siteplan-point.purple { border-left: 4px solid var(--primary); }
+.siteplan-point h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px; font-weight: 600;
+  color: var(--primary);
+  margin-bottom: var(--spacing-xs);
+}
+.siteplan-point p { color: var(--on-surface-variant); font-size: 16px; line-height: 1.6; }
+
+/* ============================================================
+   WHY SECTION
+   ============================================================ */
+.section-why { padding: var(--spacing-xl) 0; }
+.why-box {
+  background-color: var(--primary-container);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+}
+.why-box h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--secondary-fixed);
+  margin-bottom: 20px;
+}
+.why-list { display: flex; flex-direction: column; gap: 7px; }
+.why-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease;
+}
+.why-item:hover { background-color: rgba(255,255,255,0.08); }
+.why-item .material-symbols-outlined { color: var(--secondary-fixed); font-size: 24px; flex-shrink: 0; }
+.why-item h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px; font-weight: 600;
+  color: #fff;
+  margin-bottom: var(--spacing-xs);
+}
+.why-item p { color: rgba(255,214,255,0.8); font-size: 16px; line-height: 1.6; }
+
+/* ============================================================
+   CONTACT / CTA
+   ============================================================ */
+.section-contact {
+  padding: 40px 0;
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+.section-contact .center { text-align: center; margin-bottom: 40px; }
+.section-contact h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--spacing-sm);
+}
+.section-contact .subtitle-cta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px; font-weight: 600; line-height: 1.4;
+  color: var(--secondary-fixed);
+}
+.contact-form-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  color: var(--on-surface);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+.form-group { display: flex; flex-direction: column; gap: var(--spacing-xs); }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px; letter-spacing: 0.02em; font-weight: 600;
+  color: var(--on-surface);
+}
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--surface-container);
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: var(--on-surface);
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+.form-group input:focus,
+.form-group select:focus {
+  box-shadow: 0 0 0 2px var(--secondary);
+}
+.form-group input::placeholder { color: var(--outline); }
+.btn-submit {
+  width: 50%;
+  padding: 20px;
+  background-color: var(--secondary);
+  color: var(--on-secondary);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px; font-weight: 600; line-height: 1.4;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 24px rgba(75,103,0,0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.btn-submit::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+.btn-submit:hover::before { width: 500px; height: 500px; }
+.btn-submit:hover { background-color: var(--secondary-fixed-dim); color: var(--on-secondary-fixed); transform: translateY(-2px); }
+.btn-submit:active { transform: translateY(0); }
+.form-note {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  color: var(--outline);
+  margin-top: var(--spacing-md);
+}
+
+/* Success message */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: var(--spacing-lg);
+  animation: scaleIn 0.4s ease forwards;
+}
+.form-success.show { display: block; }
+.success-icon {
+  font-size: 64px;
+  color: var(--secondary);
+  margin-bottom: var(--spacing-md);
+}
+.form-success h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px; font-weight: 600;
+  color: var(--primary);
+  margin-bottom: var(--spacing-sm);
+}
+.form-success p { color: var(--on-surface-variant); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background-color: var(--surface-container-highest);
+  padding: 40px 0;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+.footer-brand img { height: 48px; margin-bottom: var(--spacing-md); }
+.footer-brand p {
+  font-size: 16px; line-height: 1.6;
+  color: var(--on-surface-variant);
+  max-width: 400px;
+  margin-bottom: var(--spacing-md);
+}
+.footer-socials { display: flex; gap: var(--spacing-md); }
+.social-icon {
+  width: 40px; height: 40px;
+  background-color: rgba(80,0,95,0.1);
+  border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.social-icon:hover {
+  background-color: var(--primary);
+  color: #fff;
+  transform: translateY(-3px);
+}
+.footer-col h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px; letter-spacing: 0.02em; font-weight: 600;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: var(--spacing-md);
+}
+.footer-links { display: flex; flex-direction: column; gap: var(--spacing-sm); }
+.footer-link {
+  font-size: 16px; line-height: 1.6;
+  color: var(--on-surface-variant);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.footer-link:hover { color: var(--primary); }
+.footer-contact-address { color: var(--on-surface-variant); font-size: 16px; line-height: 1.6; margin-bottom: var(--spacing-sm); }
+.footer-contact-phone,
+.footer-contact-email {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 16px;
+  display: block;
+}
+.footer-bottom {
+  max-width: var(--container-max);
+  margin: var(--spacing-lg) auto 0;
+  padding: var(--spacing-lg) var(--margin-mobile) 0;
+  border-top: 1px solid var(--outline-variant);
+  text-align: center;
+}
+.footer-bottom p { color: var(--on-surface-variant); font-size: 16px; line-height: 1.6; }
+
+/* ============================================================
+   WHATSAPP BUTTON
+   ============================================================ */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 50;
+  width: 64px; height: 64px;
+  background-color: #25D366;
+  color: #fff;
+  border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulse-ring 2s infinite;
+}
+.whatsapp-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0 12px 32px rgba(37,211,102,0.6);
+  animation: none;
+}
+.whatsapp-btn:active { transform: scale(0.95); }
+.whatsapp-btn svg { width: 32px; height: 32px; fill: currentColor; }
+
+/* ============================================================
+   RESPONSIVE — md (768px)
+   ============================================================ */
+@media (min-width: 768px) {
+  .container { padding-left: var(--margin-desktop); padding-right: var(--margin-desktop); }
+  .nav-links { display: flex; }
+  .hamburger { display: none; }
+  .hero-content { text-align: left; }
+  .hero-cta-group { flex-direction: row; justify-content: flex-start; }
+  .cards-grid { grid-template-columns: repeat(3, 1fr); }
+  .market-grid { grid-template-columns: repeat(2, 1fr); }
+  .lifestyle-grid { grid-template-columns: repeat(2, 1fr); }
+  .section-amenities .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+  .spaces-header { flex-direction: row; max-width: none; }
+  .spaces-header-text { max-width: 600px; }
+  .spaces-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: 7fr 5fr; height: 800px; }
+  .gallery-main { height: auto; }
+  .gallery-sub { height: auto; }
+  /* .gallery-mini { height: auto; } */
+  .siteplan-grid { grid-template-columns: 2fr 1fr; }
+  .form-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+  .footer-brand { grid-column: span 1; }
+  .footer-bottom { text-align: left; }
+  .why-box { padding: 40px; }
+}
+
+/* ============================================================
+   RESPONSIVE — lg (1024px)
+   ============================================================ */
+@media (min-width: 1024px) {
+  .section-amenities .amenities-grid { grid-template-columns: repeat(6, 1fr); }
+  .spaces-grid { grid-template-columns: repeat(5, 1fr); }
+  .gallery-secondary { grid-template-rows: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav" id="main-nav">
+  <div class="nav-inner container">
+    <div class="nav-logo">
+      <img alt="Bareilly Central Logo" src="./Assets/logo.jpg"/>
+    </div>
+    <div class="nav-links">
+      <a class="nav-link" href="#experiences">Experiences</a>
+      <a class="nav-link active" href="#leasing">Leasing</a>
+      <a class="nav-link" href="#spaces">Spaces</a>
+      <a class="nav-link" href="#amenities">Amenities</a>
+      <a class="nav-link" href="#gallery">Gallery</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-search material-symbols-outlined" id="search-toggle">search</span>
+      <button class="btn-plan-visit" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Plan Visit</button>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <a class="mobile-nav-link" href="#experiences" onclick="closeMobileNav()">Experiences</a>
+  <a class="mobile-nav-link" href="#spaces" onclick="closeMobileNav()">Spaces</a>
+  <a class="mobile-nav-link" href="#amenities" onclick="closeMobileNav()">Amenities</a>
+  <a class="mobile-nav-link" href="#gallery" onclick="closeMobileNav()">Gallery</a>
+  <a class="mobile-nav-link" href="#contact" onclick="closeMobileNav()">Contact</a>
+</div>
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img alt="Hero Background" src="./Assets/bg1.jpg"/>
+    <div class="hero-overlay-purple"></div>
+    <div class="hero-overlay-dark"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <span class="hero-badge">Opening Soon</span>
+      <h1 class="hero-title">
+        Bareilly Has a <span class="hero-title-accent">New Landmark.</span><br/>
+        Your Legacy Starts Here.
+      </h1>
+      <p class="hero-desc">
+        Discover a high-octane retail and food destination in the heart of DD Puram. Where global brands meet premium local vibes.
+      </p>
+      <div class="hero-cta-group">
+        <button class="btn-primary-hero" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          Explore Leasing Opportunities
+        </button>
+        <button class="btn-secondary-hero" onclick="document.getElementById('experiences').scrollIntoView({behavior:'smooth'})">
+          Discover the Experience
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <span class="trust-label">Trusted by Industry Giants</span>
+      <div class="trust-logos">
+        <div class="trust-logo-placeholder" style="width:96px"></div>
+        <div class="trust-logo-placeholder" style="width:128px"></div>
+        <div class="trust-logo-placeholder" style="width:112px"></div>
+        <div class="trust-logo-placeholder" style="width:96px"></div>
+        <div class="trust-logo-placeholder" style="width:128px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BRAND VISION
+     ============================================================ -->
+<section class="section-vision" id="experiences">
+  <div class="liquid-blob" style="width:500px;height:500px;background:var(--primary-fixed);top:0;left:0;"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>More Than a Mall, A Vision Realized</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-grid">
+      <div class="vision-card reveal delay-100">
+        <div class="card-icon purple">
+          <span class="material-symbols-outlined">architecture</span>
+        </div>
+        <h3>Iconic Architecture</h3>
+        <p>Sleek lines and glass facades designed to be the crown jewel of Bareilly's urban landscape.</p>
+      </div>
+      <div class="vision-card featured reveal delay-200">
+        <div class="card-icon green">
+          <span class="material-symbols-outlined">deck</span>
+        </div>
+        <h3>Grand Atrium</h3>
+        <p>A 3000 sq ft soaring space that hosts premium launches, events, and cultural spectacles.</p>
+      </div>
+      <div class="vision-card reveal delay-300">
+        <div class="card-icon red">
+          <span class="material-symbols-outlined">celebration</span>
+        </div>
+        <h3>Unrivaled Experiences</h3>
+        <p>From high-street retail to experiential dining, every visit is a journey of discovery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MARKET OPPORTUNITY
+     ============================================================ -->
+<section class="section-market">
+  <div class="container">
+    <div class="market-grid">
+      <div class="reveal-left">
+        <h2 class="market-title">The Retail Revolution in Tier-2 India</h2>
+        <p class="market-desc">Bareilly is witnessing an unprecedented surge in luxury consumption and organized retail appetite. Be where the growth is.</p>
+        <a class="market-report-link" href="#">
+          View Market Report
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+      <div class="market-stats reveal-right">
+        <div class="stat-card">
+          <div class="stat-number" data-target="11.19" data-suffix="%">0%</div>
+          <div class="stat-label">F&amp;B Growth YoY</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">Top 10</div>
+          <div class="stat-label">Tier-2 Hub</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SPACES
+     ============================================================ -->
+<section class="section-spaces" id="spaces">
+  <div class="container">
+    <div class="spaces-header reveal">
+      <div class="spaces-header-text">
+        <h2>Success Here Comes in All Shapes and Sizes</h2>
+        <p>Customizable floor plates and strategic zoning to fit every business model.</p>
+      </div>
+      <div class="spaces-filter">
+        <button class="filter-btn active" data-filter="retail">Retail</button>
+        <button class="filter-btn" data-filter="food">Food</button>
+        <button class="filter-btn" data-filter="service">Service</button>
+      </div>
+    </div>
+    <div class="spaces-grid" id="spaces-grid">
+      <div class="space-card reveal delay-100" data-category="retail">
+        <span class="material-symbols-outlined space-icon">drive_eta</span>
+        <h4>Drive-through</h4>
+        <span class="space-type">Prime Frontage</span>
+        <div class="space-size">1500+ sq ft</div>
+      </div>
+      <div class="space-card reveal delay-200" data-category="retail">
+        <span class="material-symbols-outlined space-icon">ac_unit</span>
+        <h4>AC Outlets</h4>
+        <span class="space-type">Premium Interior</span>
+        <div class="space-size">400 - 1200 sq ft</div>
+      </div>
+      <div class="space-card reveal delay-300" data-category="retail">
+        <span class="material-symbols-outlined space-icon">shopping_cart</span>
+        <h4>Supermarket</h4>
+        <span class="space-type">Anchor Space</span>
+        <div class="space-size">5000+ sq ft</div>
+      </div>
+      <div class="space-card reveal delay-400" data-category="food">
+        <span class="material-symbols-outlined space-icon">fastfood</span>
+        <h4>Street Food</h4>
+        <span class="space-type">Food Bazaar</span>
+        <div class="space-size">200 - 500 sq ft</div>
+      </div>
+      <div class="space-card reveal delay-500" data-category="service">
+        <span class="material-symbols-outlined space-icon">storefront</span>
+        <h4>Craft Bazaar</h4>
+        <span class="space-type">Cultural Pods</span>
+        <div class="space-size">Varied Sizes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LIFESTYLE
+     ============================================================ -->
+<section class="section-lifestyle">
+  <div class="container">
+    <div class="lifestyle-grid">
+      <div class="lifestyle-image-wrap reveal-left">
+        <div class="lifestyle-img-box">
+          <img alt="Lifestyle" src="./Assets/bg1.jpg"/>
+          <div class="lifestyle-img-caption">
+            <p>"A destination that feels like the city's living room."</p>
+          </div>
+        </div>
+      </div>
+      <div class="lifestyle-content reveal-right">
+        <h2>The Central Lifestyle</h2>
+        <div class="lifestyle-features">
+          <div class="lifestyle-feature">
+            <div class="feature-icon-wrap green">
+              <span class="material-symbols-outlined">restaurant</span>
+            </div>
+            <div>
+              <h4>Gourmet Dining</h4>
+              <p>Alfresco dining, fine restaurants, and a high-energy food court.</p>
+            </div>
+          </div>
+          <div class="lifestyle-feature">
+            <div class="feature-icon-wrap purple">
+              <span class="material-symbols-outlined">local_mall</span>
+            </div>
+            <div>
+              <h4>Curated Retail</h4>
+              <p>A mix of luxury boutiques and high-street essentials.</p>
+            </div>
+          </div>
+          <div class="lifestyle-feature">
+            <div class="feature-icon-wrap red">
+              <span class="material-symbols-outlined">movie</span>
+            </div>
+            <div>
+              <h4>Vibrant Entertainment</h4>
+              <p>Gaming zones, cinema, and live performance arenas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AMENITIES
+     ============================================================ -->
+<section class="section-amenities" id="amenities">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Everything You Can Ask For</h2>
+      <p class="subtitle" style="margin-top:8px">World-class infrastructure for a seamless tenant and visitor experience.</p>
+      <div class="section-divider" style="margin-top:16px"></div>
+    </div>
+    <div class="amenities-grid">
+      <div class="amenity-card reveal delay-100">
+        <span class="material-symbols-outlined">door_front</span>
+        <span class="label">Grand Entrances</span>
+      </div>
+      <div class="amenity-card reveal delay-200">
+        <span class="material-symbols-outlined">wc</span>
+        <span class="label">Premium Washrooms</span>
+      </div>
+      <div class="amenity-card reveal delay-300">
+        <span class="material-symbols-outlined">thermostat</span>
+        <span class="label">Climate Control</span>
+      </div>
+      <div class="amenity-card reveal delay-100">
+        <span class="material-symbols-outlined">security</span>
+        <span class="label">24/7 Security</span>
+      </div>
+      <div class="amenity-card reveal delay-200">
+        <span class="material-symbols-outlined">local_parking</span>
+        <span class="label">Smart Parking</span>
+      </div>
+      <div class="amenity-card reveal delay-300">
+        <span class="material-symbols-outlined">outdoor_grill</span>
+        <span class="label">Food Bazaar</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY
+     ============================================================ -->
+<section class="section-gallery" id="gallery">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>A Glimpse into the Future</h2>
+      <p style="color:var(--on-surface-variant);margin-top:8px;max-width:512px;margin-left:auto;margin-right:auto">Explore the vibrant life and architectural excellence of Bareilly's new landmark.</p>
+      <div class="section-divider" style="margin-top:16px"></div>
+    </div>
+    <div class="gallery-grid reveal-scale">
+      <div class="gallery-main">
+        <img alt="Architectural Excellence" src="./Assets/bg1.jpg"/>
+        <div class="gallery-overlay">
+          <span>Iconic Facade Design</span>
+        </div>
+      </div>
+      <div class="gallery-secondary">
+        <div class="gallery-sub">
+          <img alt="Lifestyle Dining" src="./Assets/h2.jpg"/>
+          <div class="gallery-overlay">
+            <span>Gourmet Experiences</span>
+          </div>
+        </div>
+        <div class="gallery-mini">
+          <div class="gallery-sub gallery-placeholder">
+            <span class="material-symbols-outlined">image</span>
+            <div class="gallery-overlay"><span style="font-size:14px">Retail Spaces</span></div>
+          </div>
+          <div class="gallery-sub gallery-placeholder">
+            <span class="material-symbols-outlined">image</span>
+            <div class="gallery-overlay"><span style="font-size:14px">Grand Atrium</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-view-all reveal">
+      <a href="#">
+        View Full Gallery
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SITE PLAN
+     ============================================================ -->
+<section class="section-siteplan">
+  <div class="liquid-blob" style="width:400px;height:400px;background:rgba(164,215,48,0.2);bottom:-80px;right:-80px;"></div>
+  <div class="liquid-blob" style="width:300px;height:300px;background:rgba(255,214,255,0.2);top:-40px;left:-40px;"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="siteplan-grid">
+      <div class="reveal-left">
+        <h2>Masterfully Planned for Success</h2>
+        <p>Strategic zoning and world-class infrastructure designed for maximum brand visibility.</p>
+        <div class="siteplan-box">
+          <div class="siteplan-box-inner">
+            <span class="material-symbols-outlined">map</span>
+            <p>Site Plan Graphic</p>
+          </div>
+        </div>
+      </div>
+      <div class="siteplan-points reveal-right">
+        <div class="siteplan-point green">
+          <h4>Grand Entrances</h4>
+          <p>Multiple high-visibility entry points for seamless flow.</p>
+        </div>
+        <div class="siteplan-point purple">
+          <h4>Central Atrium</h4>
+          <p>The heart of the mall, designed for events and gatherings.</p>
+        </div>
+        <div class="siteplan-point green">
+          <h4>Walking Street Plaza</h4>
+          <p>Open-air retail experience with premium landscaping.</p>
+        </div>
+        <div class="siteplan-point purple">
+          <h4>Ample Parking</h4>
+          <p>Multi-level smart parking for over 500+ vehicles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY BAREILLY CENTRAL
+     ============================================================ -->
+<section class="section-why">
+  <div class="container">
+    <div class="why-box reveal-scale">
+      <h2>Why Bareilly Central?</h2>
+      <div class="why-list">
+        <div class="why-item">
+          <span class="material-symbols-outlined">check_circle</span>
+          <div>
+            <h4>Foot Traffic Goldmine</h4>
+            <p>Located in DD Puram, the busiest high-street commercial hub in the city.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="material-symbols-outlined">check_circle</span>
+          <div>
+            <h4>Affluent Catchment</h4>
+            <p>Surrounded by Bareilly's most premium residential colonies and schools.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="material-symbols-outlined">check_circle</span>
+          <div>
+            <h4>Ready-to-Move Spaces</h4>
+            <p>Project nearing completion with flexible fit-out timelines.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT / CTA FORM
+     ============================================================ -->
+<section class="section-contact" id="contact">
+  <div class="container">
+    <div class="center reveal">
+      <h2>Join the Revolution</h2>
+      <p class="subtitle-cta">Secure Your Space Today. Demand is Outpacing Supply.</p>
+    </div>
+    <div class="contact-form-wrap reveal">
+      <div id="form-container">
+        <div class="form-grid" id="leasing-form">
+          <div class="form-group">
+            <label for="full-name">Full Name</label>
+            <input id="full-name" placeholder="John Doe" type="text"/>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input id="phone" placeholder="+91 00000 00000" type="tel"/>
+          </div>
+          <div class="form-group full">
+            <label for="business">Business Name / Interest</label>
+            <input id="business" placeholder="e.g., Starbucks Franchise, Local Fashion Brand" type="text"/>
+          </div>
+          <div class="form-group full">
+            <label for="area">Expected Area Required (sq ft)</label>
+            <select id="area">
+              <option>Below 500 sq ft</option>
+              <option>500 - 1500 sq ft</option>
+              <option>1500 - 3000 sq ft</option>
+              <option>3000+ sq ft</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <button class="btn-submit" id="submit-btn" type="button">Register Your Interest</button>
+          </div>
+        </div>
+        <p class="form-note">Our leasing expert will get back to you within 24 hours.</p>
+      </div>
+      <div class="form-success" id="form-success">
+        <div class="success-icon material-symbols-outlined">check_circle</div>
+        <h3>Thank You!</h3>
+        <p>Your interest has been registered. Our leasing team will reach out within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img alt="Bareilly Central" src="./Assets/bg1.jpg"/>
+        <p>The most awaited lifestyle and food destination of Bareilly. Redefining retail experiences with a touch of global luxury.</p>
+        <div class="footer-socials">
+          <a class="social-icon" href="#"><span class="material-symbols-outlined">face_nod</span></a>
+          <a class="social-icon" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a class="footer-link" href="#contact">Leasing Inquiry</a>
+          <a class="footer-link" href="#">Terms of Service</a>
+          <a class="footer-link" href="#">Privacy Policy</a>
+          <a class="footer-link" href="#">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p class="footer-contact-address">DD Puram, Near Selection Point,<br/>Bareilly, Uttar Pradesh</p>
+        <span class="footer-contact-phone">+91-581-XXXXXXX</span>
+        <span class="footer-contact-email">leasing@bareillycentral.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Bareilly Central. Elevated Lifestyle Hub. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- WhatsApp -->
+<a class="whatsapp-btn" href="https://wa.me/#" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+/* ============================================================
+   NAVIGATION — scroll + hamburger
+   ============================================================ */
+const nav = document.getElementById('main-nav');
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+  updateActiveNavLink();
+});
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+});
+
+function closeMobileNav() {
+  hamburger.classList.remove('open');
+  mobileNav.classList.remove('open');
+}
+
+/* Active nav link based on scroll position */
+function updateActiveNavLink() {
+  const sections = ['experiences','spaces','amenities','gallery','contact'];
+  const links = document.querySelectorAll('.nav-link');
+  let current = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) current = id;
+  });
+  links.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+}
+
+/* ============================================================
+   INTERSECTION OBSERVER — reveal on scroll
+   ============================================================ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+  revealObserver.observe(el);
+});
+
+/* ============================================================
+   ANIMATED STAT COUNTER
+   ============================================================ */
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      if (!target) return;
+      let start = 0;
+      const duration = 1800;
+      const startTime = performance.now();
+      function update(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const val = (start + (target - start) * eased).toFixed(2);
+        el.textContent = val + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+      statObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el));
+
+/* ============================================================
+   SPACE FILTER TABS
+   ============================================================ */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const spaceCards = document.querySelectorAll('.space-card');
+
+// All categories for "Retail" (show all)
+const allRetailCategories = ['retail'];
+const foodCategories = ['food'];
+const serviceCategories = ['service'];
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+
+    spaceCards.forEach(card => {
+      const cat = card.dataset.category;
+      let visible = false;
+      if (filter === 'retail') visible = true; // show all on Retail
+      else if (filter === 'food' && cat === 'food') visible = true;
+      else if (filter === 'service' && cat === 'service') visible = true;
+
+      card.style.display = visible ? 'block' : 'none';
+      if (visible) {
+        card.style.animation = 'fadeInUp 0.4s ease forwards';
+      }
+    });
+  });
+});
+
+/* ============================================================
+   CONTACT FORM — validation + success state
+   ============================================================ */
+document.getElementById('submit-btn').addEventListener('click', () => {
+  const name = document.getElementById('full-name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const business = document.getElementById('business').value.trim();
+
+  if (!name) { shake('full-name'); return; }
+  if (!phone) { shake('phone'); return; }
+  if (!business) { shake('business'); return; }
+
+  // Show success
+  document.getElementById('form-container').style.display = 'none';
+  const success = document.getElementById('form-success');
+  success.classList.add('show');
+});
+
+function shake(id) {
+  const el = document.getElementById(id);
+  el.style.animation = 'none';
+  el.style.boxShadow = '0 0 0 2px #ba1a1a';
+  setTimeout(() => {
+    el.style.boxShadow = '';
+    el.focus();
+  }, 600);
+}
+</script>
+</body>
+</html>
